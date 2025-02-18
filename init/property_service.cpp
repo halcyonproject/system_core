@@ -1413,6 +1413,11 @@ static void SetSafetyNetProps() {
     InitPropertySet("ro.boot.veritymode", "enforcing");
     InitPropertySet("ro.boot.warranty_bit", "0");
     InitPropertySet("ro.build.tags", "release-keys");
+#ifndef ENG_BUILD
+    // Spoof non-eng builds (such as userdebug) to user
+    InitPropertySet("ro.build.type", "user");
+    InitPropertySet("ro.debuggable", "0");
+#endif
 }
 
 void PropertyInit() {
