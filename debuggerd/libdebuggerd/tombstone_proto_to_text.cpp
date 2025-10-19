@@ -581,6 +581,7 @@ static void print_guest_thread(CallbackType callback, SymbolizeCallbackType symb
 bool tombstone_proto_to_text(const Tombstone& tombstone, CallbackType callback,
                              SymbolizeCallbackType symbolize) {
   CBL("*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***");
+  CBL("Halcyon Build Number: '%s'", tombstone.halcyon_buildnum().c_str());
   CBL("Build fingerprint: '%s'", tombstone.build_fingerprint().c_str());
   CBL("Revision: '%s'", tombstone.revision().c_str());
   CBL("ABI: '%s'", abi_string(tombstone.arch()));
