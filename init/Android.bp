@@ -130,6 +130,7 @@ libinit_cc_defaults {
         "-DREBOOT_BOOTLOADER_ON_PANIC=0",
         "-DSHUTDOWN_ZERO_TIMEOUT=0",
         "-DWORLD_WRITABLE_KMSG=0",
+        "-DSPOOF_SAFETYNET=1",
         "-Wall",
         "-Werror",
         "-Wextra",
@@ -160,6 +161,8 @@ libinit_cc_defaults {
                 "-DENG_BUILD",
                 "-USHUTDOWN_ZERO_TIMEOUT",
                 "-DSHUTDOWN_ZERO_TIMEOUT=1",
+                "-USPOOF_SAFETYNET",
+                "-DSPOOF_SAFETYNET=0",
             ],
         },
         uml: {
@@ -237,6 +240,7 @@ cc_defaults {
     defaults: [
         "init_defaults",
         "selinux_policy_version",
+        "spoof_first_api_level_32_defaults",
     ],
     srcs: init_common_sources + init_device_sources,
     export_include_dirs: ["."],
@@ -495,6 +499,7 @@ init_first_stage_cc_defaults {
         "-DLOG_UEVENTS=0",
         "-DSEPOLICY_VERSION=30", // TODO(jiyong): externalize the version number
         "-DUSE_REAL_SET_FATAL_REBOOT_TARGET_FUNC",
+        "-DSPOOF_SAFETYNET=1",
     ] + GLOBAL_HWASAN_OPTIONS,
 
     product_variables: {
@@ -524,6 +529,8 @@ init_first_stage_cc_defaults {
             cflags: [
                 "-USHUTDOWN_ZERO_TIMEOUT",
                 "-DSHUTDOWN_ZERO_TIMEOUT=1",
+                "-USPOOF_SAFETYNET",
+                "-DSPOOF_SAFETYNET=0",
             ],
         },
     },
